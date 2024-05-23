@@ -6,6 +6,13 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [CommonModule],
   template: `
+  <!-- basic example -->
+  <ng-container [ngSwitch]="value">
+    <ng-template ngSwitchCase="">empty string</ng-template>
+    <ng-template ngSwitchCase="foo">"foo"</ng-template>
+  </ng-container>
+
+  <!-- more practical example distilled from a real project -->
   <ng-container [ngSwitch]="buttonVariant">
     <ng-template ngSwitchCase=""><button mat-button>Button</button></ng-template>
     <ng-template ngSwitchCase="raised"><button mat-raised-button>Button</button></ng-template>
@@ -16,5 +23,6 @@ import { Component } from '@angular/core';
   styles: [],
 })
 export class AppComponent {
+  value = "" as "" | "foo";
   buttonVariant: "" | "raised" | "stroked" | "flat" = "";
 }
